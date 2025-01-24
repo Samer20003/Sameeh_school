@@ -1,0 +1,57 @@
+/* Base styles for all screen sizes */
+.home-page {
+  text-align: center;
+  padding: 20px;
+}
+
+.exam-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 15px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.exam-square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  font-size: 1.2em;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.exam-square:hover {
+  background-color: #0056b3;
+}
+
+.back-to-home {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-to-home:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .exam-grid {
+      grid-template-columns: 1fr; /* Stack squares vertically */
+      gap: 10px; /* Adjust gap for stacked layout */
+  }
+
+  .exam-square {
+      font-size: 1em; /* Optional: Adjust font size for smaller screens */
+      padding: 15px; /* Optional: Adjust padding for smaller screens */
+  }
+}
