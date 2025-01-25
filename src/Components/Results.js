@@ -14,12 +14,12 @@ const Results = ({ questions, userAnswers, onRestart }) => {
 
   return (
     <div className="results">
-      <h2>Results</h2>
+      <h2>النتيجه</h2>
       <p>
-        You scored {correctAnswers} out of {questions.length}.
+        نتيجتك {correctAnswers} من {questions.length}
       </p>
-      <p>{isPassed ? 'Congratulations! You passed!' : 'Sorry, you failed.'}</p>
-      <h3>Review Your Mistakes:</h3>
+      <p>{isPassed ? 'Congratulations! You passed!' : 'الله لا يعطيك اياها العافيه '}</p>
+      <h3>راجع اخطائك بتركيز</h3>
       <div className="review-section">
         {questions.map((q, index) => {
           const userAnswer = userAnswers[index];
@@ -30,10 +30,10 @@ const Results = ({ questions, userAnswers, onRestart }) => {
               <div key={index} className="review-item">
                 <p><strong>Question {index + 1}:</strong> {q.question}</p>
                 <p style={{ color: 'red' }}>
-                  <strong>Your Answer:</strong> {userAnswer || 'Not answered'}
+                  <strong>اجابتك:</strong> {userAnswer || 'Not answered'}
                 </p>
                 <p style={{ color: 'green' }}>
-                  <strong>Correct Answer:</strong> {q.correctAnswer}
+                  <strong>الاجابه الصحيحه:</strong> {q.correctAnswer}
                 </p>
               </div>
             );
@@ -41,7 +41,7 @@ const Results = ({ questions, userAnswers, onRestart }) => {
           return null;
         })}
       </div>
-      <button onClick={onRestart}>Restart Quiz</button>
+      <button onClick={onRestart}>اعاده الامتحان</button>
     </div>
   );
 };

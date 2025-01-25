@@ -12,7 +12,7 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <h1>Select an Exam</h1>
+      <h1>اختار امتحان</h1>
       <div className="exam-grid">
         {Array.from({ length: totalExams }, (_, index) => (
           <div
@@ -20,7 +20,7 @@ const HomePage = () => {
             className="exam-square"
             onClick={() => handleExamClick(index + 1)}
           >
-            Exam {index + 1}
+            امتحان {index + 1}
           </div>
         ))}
       </div>

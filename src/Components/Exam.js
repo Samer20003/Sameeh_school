@@ -40,7 +40,7 @@ const Exam = () => {
       .filter((questionNumber) => questionNumber !== null);
 
     if (unansweredQuestions.length > 0) {
-      alert(`You have unanswered questions: ${unansweredQuestions.join(', ')}`);
+      alert(`لديك اساله لم تتم الاجابه عليها ${unansweredQuestions.join(', ')}`);
       return;
     }
 
@@ -77,7 +77,7 @@ const Exam = () => {
       <div className="main-content">
         <Timer onTimeUp={handleTimeUp} />
         <div className="question-counter">
-          Question {currentQuestionIndex + 1} of {questions.length}
+          السؤال {currentQuestionIndex + 1} of {questions.length}
         </div>
         <Question
           question={questions[currentQuestionIndex].question}
@@ -87,21 +87,21 @@ const Exam = () => {
         />
         <div className="navigation">
           <button onClick={handlePrevious} disabled={currentQuestionIndex === 0}>
-            Previous
+            السابق
           </button>
           <button
             onClick={handleNext}
             disabled={currentQuestionIndex === questions.length - 1}
           >
-            Next
+            التالي
           </button>
           {currentQuestionIndex === questions.length - 1 && (
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit}>تقدم</button>
           )}
         </div>
         {/* Add the "Back to Home" button */}
         <button onClick={handleBackToHome} className="back-to-home">
-          Back to Home
+          الصفحه الرئيسيه
         </button>
       </div>
     </div>

@@ -21,7 +21,7 @@ const Timer = ({ onTimeUp }) => {
 
   return (
     <div className="timer">
-      Time Left: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+      الوقت المتبقي:{minutes}:{seconds < 10 ? `0${seconds}` : seconds}
     </div>
   );
 };

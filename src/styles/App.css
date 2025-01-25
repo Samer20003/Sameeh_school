@@ -48,48 +48,41 @@ body {
   min-height: 100vh;
 }
 
+/* Fixed size for .app on larger screens */
 .app {
   background: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 90%; /* Adjusted width for smaller screens */
-  max-width: 800px; /* Max width for larger screens */
+  width: 650px; /* Fixed width for larger screens */
+  min-height: 350px; /* Use min-height instead of fixed height */
   margin: 20px auto; /* Center the container horizontally */
+  overflow-y: auto; /* Add scroll if content overflows */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute space between content and buttons */
 }
 
 .question {
   margin-bottom: 20px;
-  text-align: center; /* Center the question text */
+  text-align: center;
+  word-wrap: break-word; /* Prevent long text from overflowing */
 }
 
 .option {
   margin: 15px 0;
   font-size: 1.2em;
-  text-align: left; /* Align options to the left */
-}
-
-.option label {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.option input {
-  margin-right: 10px;
-  transform: scale(1.2);
-}
-
-.option span {
-  font-size: 1.1em;
+  text-align: left;
+  word-wrap: break-word; /* Prevent long text from overflowing */
 }
 
 .navigation {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: auto; /* Push buttons to the bottom */
   flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
   gap: 10px; /* Add gap between buttons */
+  padding-bottom: 10px; /* Add padding to the bottom of the navigation */
 }
 
 button {
@@ -100,11 +93,11 @@ button {
   border-radius: 5px;
   cursor: pointer;
   flex: 1 1 auto; /* Allow buttons to grow and shrink */
-  transition: background-color 0.3s ease; /* Smooth hover effect */
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #0056b3;
 }
 
 button:disabled {
@@ -123,8 +116,8 @@ button:disabled {
   gap: 20px;
   justify-content: center;
   margin-top: 20px;
-  max-height: 400px;
-  overflow-y: auto;
+  max-height: 300px; /* Adjust based on your fixed container height */
+  overflow-y: auto; /* Add scroll if content overflows */
   padding: 10px;
 }
 
@@ -167,7 +160,7 @@ button:disabled {
   border: 1px solid #ccc;
   background-color: #fff;
   cursor: pointer;
-  transition: border-color 0.3s ease; /* Smooth hover effect */
+  transition: border-color 0.3s ease;
 }
 
 .question-navigation select:hover {
@@ -177,49 +170,50 @@ button:disabled {
 /* Responsive Styles */
 @media (max-width: 768px) {
   .app {
-    width: 95%; /* Increase width for smaller screens */
-    padding: 15px; /* Reduce padding for smaller screens */
+    width: 90%; /* Adjust width for smaller screens */
+    min-height: auto; /* Allow height to adjust on smaller screens */
+    padding: 15px;
   }
 
   .option {
-    font-size: 1em; /* Reduce font size for smaller screens */
+    font-size: 1em;
   }
 
   .option span {
-    font-size: 1em; /* Reduce font size for smaller screens */
+    font-size: 1em;
   }
 
   .navigation {
-    flex-direction: column; /* Stack buttons vertically on small screens */
+    flex-direction: column;
     gap: 10px;
   }
 
   button {
-    width: 100%; /* Full width buttons on small screens */
+    width: 100%;
   }
 
   .review-item {
-    width: 100%; /* Full width for review items on small screens */
-    max-width: none; /* Remove max-width restriction */
+    width: 100%;
+    max-width: none;
   }
 }
 
 @media (max-width: 480px) {
   .app {
-    width: 100%; /* Full width on very small screens */
-    margin: 10px; /* Reduce margin */
-    padding: 10px; /* Reduce padding */
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
   }
 
   .question-counter {
-    font-size: 1em; /* Reduce font size for very small screens */
+    font-size: 1em;
   }
 
   .question-navigation label {
-    font-size: 1em; /* Reduce font size for very small screens */
+    font-size: 1em;
   }
 
   .question-navigation select {
-    font-size: 0.9em; /* Reduce font size for very small screens */
+    font-size: 0.9em;
   }
 }
