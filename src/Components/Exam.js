@@ -1,20 +1,23 @@
 import React, { useState, useCallback } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useParams, useNavigate } from 'react-router-dom';
 import Timer from './Timer';
 import Question from './Question';
 import Results from './Results';
 import examsData from '../exams.json';
+
+import { Modal, Button } from 'react-bootstrap'; // Import react-bootstrap components
 import '../styles/App.css';
 
 const Exam = () => {
-  const { examId } = useParams(); // Get the exam ID from the URL
-  const navigate = useNavigate(); // Initialize useNavigate
+  const { examId } = useParams();
+  const navigate = useNavigate();
   const exam = examsData.exams.find((exam) => exam.id === parseInt(examId));
   const questions = exam ? exam.questions : [];
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState(Array(questions.length).fill(null));
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showModal, setShowModal] = useState(false); // State to control modal visibility
 
   const handleAnswer = (answer) => {
     const newAnswers = [...userAnswers];
@@ -40,7 +43,7 @@ const Exam = () => {
       .filter((questionNumber) => questionNumber !== null);
 
     if (unansweredQuestions.length > 0) {
-      alert(`لديك اساله لم تتم الاجابه عليها ${unansweredQuestions.join(', ')}`);
+      setShowModal(true); // Show the modal
       return;
     }
 
@@ -57,9 +60,8 @@ const Exam = () => {
     setIsSubmitted(false);
   };
 
-  // Function to handle going back to the homepage
   const handleBackToHome = () => {
-    navigate('/'); // Navigate to the homepage
+    navigate('/');
   };
 
   if (isSubmitted) {
@@ -99,11 +101,29 @@ const Exam = () => {
             <button onClick={handleSubmit}>تقدم</button>
           )}
         </div>
-        {/* Add the "Back to Home" button */}
         <button onClick={handleBackToHome} className="back-to-home">
           الصفحه الرئيسيه
         </button>
       </div>
+
+      {/* React-Bootstrap Modal */}
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>تنبيه</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          لديك اساله لم تتم الاجابه عليها:{' '}
+          {userAnswers
+            .map((answer, index) => (answer === null ? index + 1 : null))
+            .filter((questionNumber) => questionNumber !== null)
+            .join(', ')}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={() => setShowModal(false)}>
+            راجع الاساله
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
