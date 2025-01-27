@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/HomePage.css';
-
+import HomeNavbar from '../Components/Navbar';
 const HomePage = () => {
   const navigate = useNavigate();
   const totalExams = 17; // Total number of exams
@@ -12,6 +12,7 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
+      <HomeNavbar />
       <h1>اختار امتحان</h1>
       <div className="exam-grid">
         {Array.from({ length: totalExams }, (_, index) => (
