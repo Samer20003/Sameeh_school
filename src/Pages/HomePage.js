@@ -4,7 +4,7 @@ import '../styles/HomePage.css';
 import HomeNavbar from '../Components/Navbar';
 const HomePage = () => {
   const navigate = useNavigate();
-  const totalExams = 17; // Total number of exams
+  const totalExams = 16; // Total number of exams
 
   const handleExamClick = (examId) => {
     navigate(`/exam/${examId}`); // Redirect to the exam page
