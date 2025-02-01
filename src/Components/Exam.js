@@ -64,6 +64,10 @@ const Exam = () => {
     navigate('/');
   };
 
+  const handleBoxClick = (index) => {
+    setCurrentQuestionIndex(index);
+  };
+
   if (isSubmitted) {
     return (
       <Results
@@ -106,9 +110,22 @@ const Exam = () => {
         </button>
       </div>
 
+      {/* New section for the boxes */}
+      <div className="boxes-section">
+        {questions.map((_, index) => (
+          <div
+            key={index}
+            className={`box ${userAnswers[index] !== null ? 'answered' : 'unanswered'}`}
+            onClick={() => handleBoxClick(index)}
+          >
+            {index + 1}
+          </div>
+        ))}
+      </div>
+
       {/* React-Bootstrap Modal */}
       <Modal show={showModal} onHide={() => setShowModal(false)}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>تنبيه</Modal.Title>
         </Modal.Header>
         <Modal.Body>

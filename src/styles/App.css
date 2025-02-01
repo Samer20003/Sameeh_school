@@ -168,7 +168,33 @@ button:disabled {
 .question-navigation select:hover {
   border-color: #007bff;
 }
+.boxes-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
 
+.box {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: gray;
+  color: white;
+}
+
+.box.answered {
+  background-color: green;
+}
+
+.box.unanswered {
+  background-color: gray;
+}
 /* Responsive Styles */
 @media (max-width: 768px) {
   .app {
